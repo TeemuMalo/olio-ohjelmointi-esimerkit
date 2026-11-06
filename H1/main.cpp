@@ -49,11 +49,9 @@ int main()
     cout << "Anna toinen kokonaisluku: ";
     cin >> b;
 
-    // Funktiot, jotka tulostavat tuloksen
     calcSum(a, b);
     calcDiv(a, b);
 
-    // Funktio, joka palauttaa summan
     int sum = retSum(a, b);
     cout << a << " + " << b << " = " << sum << endl;
 
