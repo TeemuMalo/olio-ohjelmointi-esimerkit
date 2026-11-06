@@ -1,0 +1,72 @@
+#include <iostream>
+#include <iomanip>
+#include <stdexcept>
+
+using namespace std;
+
+void calcSum(int a, int b)
+{
+    cout << a << " + " << b << " = " << a + b << endl;
+}
+
+void calcDiv(int a, int b)
+{
+    if (b == 0)
+    {
+        cout << "Error: jakaja ei saa olla nolla!" << endl;
+    }
+    else
+    {
+        float result = static_cast<float>(a) / b;
+        cout << a << "/" << b << " = "
+             << fixed << setprecision(2) << result << endl;
+    }
+}
+
+int retSum(int a, int b)
+{
+    return a + b;
+}
+
+float retDiv(int a, int b)
+{
+    if (b == 0)
+    {
+        throw runtime_error("jakaja ei saa olla nolla!");
+    }
+
+    return static_cast<float>(a) / b;
+}
+
+int main()
+{
+    int a;
+    int b;
+
+    cout << "Anna ensimmainen kokonaisluku: ";
+    cin >> a;
+
+    cout << "Anna toinen kokonaisluku: ";
+    cin >> b;
+
+    // Funktiot, jotka tulostavat tuloksen
+    calcSum(a, b);
+    calcDiv(a, b);
+
+    // Funktio, joka palauttaa summan
+    int sum = retSum(a, b);
+    cout << a << " + " << b << " = " << sum << endl;
+
+    float result;
+    try
+    {
+        result = retDiv(a, b);
+        cout << a << "/" << b << " = "
+             << fixed << setprecision(2) << result << endl;
+    }
+    catch (runtime_error& e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+    return 0;
+}
